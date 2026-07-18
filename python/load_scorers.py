@@ -1,10 +1,13 @@
 import requests
 from sqlalchemy import create_engine, text
 
+from config import load_api_key
 
 
 # CONFIG
-API_KEY = "1715573ab8024985854d38aec520ea96"
+API_KEY = load_api_key()
+if not API_KEY:
+    raise RuntimeError("Missing FOOTBALL_DATA_API_KEY in .env")
 SEASON = 2025
 
 headers = {
